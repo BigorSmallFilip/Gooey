@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en" col-mode="dark">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Gooey</title>
+	<link rel="stylesheet" href="master.css">
+	<link rel="icon" href="favicon.svg" type="image/svg+xml">
+	<script type="importmap">
+		{
+			"imports": {
+				"three": "https://cdn.jsdelivr.net/npm/three@0.173.0/build/three.module.js",
+				"three/addons/": "https://cdn.jsdelivr.net/npm/three@0.173.0/examples/jsm/"
+			}
+		}
+	</script>
+</head>
+<body>
+	
+	<main>
+		<header>
+			<img src="favicon.svg" draggable="false" style="padding: 6px;">
+			<div class="menubar">
+				<div class="menu-button">
+					<label>File</label>
+					<div class="menu">
+						File menu
+					</div>
+				</div>
+				<div class="menu-button">
+					<label>Edit</label>
+					<div class="menu">
+						Edit menu
+					</div>
+				</div>
+				<div class="menu-button">
+					<label>Selection</label>
+					<div class="menu">
+						Selection menu
+					</div>
+				</div>
+			</div>
+		</header>
+
+		<div id="pane-container">
+			<div class="pane-split" dir="horizontal" style="--size: 0px">
+				<div class="pane" style="--size: 240px">
+
+					<div class="panel">
+						<header>
+							<h1>Panel 1</h1>
+							<div class="flex-separate"></div>
+							<div class="menubar">
+								<div class="menu-button">
+									<label>Yes 1</label>
+									<div class="menu">
+										Yes 1 menu
+									</div>
+								</div>
+								<div class="menu-button">
+									<label>Yes 2</label>
+									<div class="menu">
+										Yes 2 menu
+									</div>
+								</div>
+							</div>
+						</header>
+						<section>
+							<h1>Panel content</h1>
+							<p>
+								Lorem ipsum dolor sit, amet consectetur adipisicing elit. Tempora non, quam veritatis adipisci et quasi dolorem omnis eligendi possimus vitae est eos laborum minus! Sit molestiae possimus architecto id veniam!
+							</p>
+							<hr>
+							<p>
+								Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate illo esse omnis accusamus, consectetur sit adipisci nobis, alias amet non quia tempore beatae iure est, neque veniam itaque culpa doloribus.
+							</p>
+							<hr>
+							<canvas width="200" height="200" id="canvas-test1"></canvas>
+						</section>
+					</div>
+
+				</div>
+				<div class="pane-sash"></div>
+				<div class="pane-split" dir="vertical" style="--size: 500px">
+					<div class="pane" style="--size: 100px">
+						<div class="panel">
+							<header>
+								<h1>Panel 2</h1>
+							</header>
+							<canvas class="fullpanel" id="canvas-test2"></canvas>
+							<section>
+								Text here too YYYYYYYYA
+							</section>
+						</div>
+					</div>
+					<div class="pane-sash"></div>
+					<div class="pane-split" dir="horizontal" style="--size: 400px">
+						<div class="pane" style="--size: 100px">
+							<div class="panel">
+								<header>
+									<h1>Panel 3</h1>
+								</header>
+							</div>
+						</div>
+						<div class="pane-sash"></div>
+						<div class="pane-split" dir="vertical" style="--size: 100px">
+							<div class="pane" style="--size: 300px">
+								<div class="panel">
+									<header>
+										<h1>Panel 4</h1>
+									</header>
+									<canvas class="fullpanel" id="three-canvas"></canvas>
+								</div>
+							</div>
+							<div class="pane-sash"></div>
+							<div class="pane" style="--size: 200px">
+								<div class="panel">
+									<header>
+										<h1>Panel 5</h1>
+									</header>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="pane-sash"></div>
+					<div class="pane-split" dir="horizontal" style="--size: 200px">
+						<div class="pane-split" dir="vertical" style="--size: 200px">
+							<div class="pane" style="--size: 50px">
+								<div class="panel">
+									<header>
+										<h1>Panel 6 TOP</h1>
+									</header>
+								</div>
+							</div>
+							<div class="pane-sash"></div>
+							<div class="pane" style="--size: 0px">
+								<div class="panel">
+									<header>
+										<h1>Panel 6 BOTTOM</h1>
+									</header>
+								</div>
+							</div>
+						</div>
+						<div class="pane-sash"></div>
+						<div class="pane" style="--size: 100px">
+							<div class="panel">Panel 7</div>
+						</div>
+						<div class="pane-sash"></div>
+						<div class="pane" style="--size: 0px">
+							<div class="panel">Panel 8</div>
+						</div>
+					</div>
+				</div>
+				<div class="pane-sash"></div>
+				<div class="pane-split" dir="vertical" style="--size: 10px">
+					<div class="pane" style="--size: 300px">
+						<div class="panel">Panel 9</div>
+					</div>
+					<div class="pane-sash"></div>
+					<div class="pane" style="--size: 0px">
+						<div class="panel">Panel 10</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<footer>
+			Footer
+		</footer>
+	</main>
+
+	<script src="main.js"></script>
+	<script>
+		setAllSashEventHandlers();
+		setAllMenubarEventHandlers();
+		window.onresize();
+	</script>
+	<script src="canvas.js"></script>
+
+	<script type="module" src="main.js"></script>
+	<script type="module">
+		import { why } from "./threewhat.js";
+		
+	</script>
+</body>
+</html>
