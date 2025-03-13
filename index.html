@@ -53,7 +53,7 @@
 
 					<div class="panel">
 						<header>
-							<h1>Panel 1</h1>
+							<h1 class="panel-drag">Panel 1</h1>
 							<div class="flex-separate"></div>
 							<div class="menubar">
 								<div class="menu-button">
@@ -90,7 +90,7 @@
 					<div class="pane" style="--size: 100px">
 						<div class="panel">
 							<header>
-								<h1>Panel 2</h1>
+								<h1 class="panel-drag">Panel 2</h1>
 							</header>
 							<canvas class="fullpanel" id="canvas-test2"></canvas>
 							<section>
@@ -103,7 +103,7 @@
 						<div class="pane" style="--size: 100px">
 							<div class="panel">
 								<header>
-									<h1>Panel 3</h1>
+									<h1 class="panel-drag">Panel 3</h1>
 								</header>
 							</div>
 						</div>
@@ -112,7 +112,7 @@
 							<div class="pane" style="--size: 300px">
 								<div class="panel">
 									<header>
-										<h1>Panel 4</h1>
+										<h1 class="panel-drag">Panel 4</h1>
 									</header>
 									<canvas class="fullpanel" id="three-canvas"></canvas>
 								</div>
@@ -121,7 +121,7 @@
 							<div class="pane" style="--size: 200px">
 								<div class="panel">
 									<header>
-										<h1>Panel 5</h1>
+										<h1 class="panel-drag">Panel 5</h1>
 									</header>
 								</div>
 							</div>
@@ -133,7 +133,7 @@
 							<div class="pane" style="--size: 50px">
 								<div class="panel">
 									<header>
-										<h1>Panel 6 TOP</h1>
+										<h1 class="panel-drag">Panel 6</h1>
 									</header>
 								</div>
 							</div>
@@ -141,29 +141,37 @@
 							<div class="pane" style="--size: 0px">
 								<div class="panel">
 									<header>
-										<h1>Panel 6 BOTTOM</h1>
+										<h1 class="panel-drag">Panel 7</h1>
 									</header>
 								</div>
 							</div>
 						</div>
 						<div class="pane-sash"></div>
 						<div class="pane" style="--size: 100px">
-							<div class="panel">Panel 7</div>
-						</div>
-						<div class="pane-sash"></div>
-						<div class="pane" style="--size: 0px">
-							<div class="panel">Panel 8</div>
+							<div class="panel">
+								<header>
+									<h1 class="panel-drag">Panel 8</h1>
+								</header>
+							</div>
 						</div>
 					</div>
 				</div>
 				<div class="pane-sash"></div>
 				<div class="pane-split" dir="vertical" style="--size: 10px">
 					<div class="pane" style="--size: 300px">
-						<div class="panel">Panel 9</div>
+						<div class="panel">
+							<header>
+								<h1 class="panel-drag">Panel 9</h1>
+							</header>
+						</div>
 					</div>
 					<div class="pane-sash"></div>
 					<div class="pane" style="--size: 0px">
-						<div class="panel">Panel 10</div>
+						<div class="panel">
+							<header>
+								<h1 class="panel-drag">Panel 10</h1>
+							</header>
+						</div>
 					</div>
 				</div>
 			</div>
@@ -177,6 +185,7 @@
 	<script>
 		setAllSashEventHandlers();
 		setAllMenubarEventHandlers();
+		setAllPanelDragEventHandlers();
 		window.onresize();
 	</script>
 	<script src="canvas.js"></script>

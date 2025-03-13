@@ -120,7 +120,7 @@ function setSashEventHandler(sash) {
 }
 
 function setAllSashEventHandlers() {
-	sashes = document.getElementsByClassName("pane-sash");
+	let sashes = document.getElementsByClassName("pane-sash");
 	for (let i = 0; i < sashes.length; i++) {
 		let sash = sashes[i];
 		setSashEventHandler(sash);
@@ -187,6 +187,87 @@ window.onresize = function() {
 	//console.log(windowSize.width + "px");
 	resizeScalePanes(g_bodyResizeMulX, g_bodyResizeMulY);
 }
+
+
+
+
+
+let g_currentPanelDrag = undefined;
+let g_currentPanelDragDropTarget = undefined;
+
+function setPanelDragEventHandler(panelDrag) {
+	panelDrag.addEventListener("mousedown", (event) => {
+		if (!panelDrag.contains(event.target)) return;
+		if (g_currentPanelDrag) {
+			alert("How are you clicking on a new panel drag while there is already one active?");
+		}
+		if (panelDrag != event.target) {
+			alert("Why?");
+		}
+		g_currentPanelDrag = getClosestParent(event.target, "panel");
+		g_currentPanelDragDropTarget = undefined;
+	});
+}
+
+function setAllPanelDragEventHandlers() {
+	let panelDrags = document.getElementsByClassName("panel-drag");
+	console.log(panelDrags);
+	for (let i = 0; i < panelDrags.length; i++) {
+		panelDrag = panelDrags[i];
+		setPanelDragEventHandler(panelDrag);
+	}
+
+	window.addEventListener("mouseup", (event) => {
+		if (!g_currentPanelDrag || !g_currentPanelDragDropTarget) {
+			g_currentPanelDrag = undefined;
+			g_currentPanelDragDropTarget = undefined;
+			return;
+		}
+
+		let draggedPane = getClosestParent(g_currentPanelDrag, "pane");
+		console.log(draggedPane);
+		console.log(draggedPane.previousElementSibling);
+
+		let prevSash = draggedPane.previousElementSibling;
+		if (!prevSash) {
+			let nextSash = draggedPane.nextElementSibling;
+			if (nextSash) {
+				nextSash.remove();
+			}
+		} else {
+			prevSash.remove();
+		}
+		draggedPane.remove();
+
+		g_currentPanelDrag = undefined;
+		g_currentPanelDragDropTarget = undefined;
+	});
+
+	document.addEventListener("mousemove", (event) => {
+		if (!g_currentPanelDrag) return;
+		let draggedPanel = getClosestParent(g_currentPanelDrag, "panel");
+		let closestPanel = getClosestParent(event.target, "panel");
+		if (closestPanel == draggedPanel) return;
+		let closestSash = undefined;
+		if (event.target.className == "pane-sash") {
+			closestSash = event.target;
+		}
+
+		if (closestSash != undefined) {
+			//console.log(closestSash);
+			g_currentPanelDragDropTarget = closestSash;
+		} else if (closestPanel != undefined) {
+			//console.log(closestPanel);
+			g_currentPanelDragDropTarget = closestPanel;
+		} else {
+			//console.log("No place to put panel");
+			g_currentPanelDragDropTarget = undefined;
+		}
+		
+	});
+}
+
+
 
 
 
