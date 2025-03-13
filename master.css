@@ -17,6 +17,7 @@
 	--border-width: 0px;
 	--gap: 1px;
 	--spacing: 4px;
+	--text-padding: 4px 8px;
 	--sash-size: 10px;
 	--box-shadow: 0 0 8px 8px rgba(0, 0, 0, 0.2);
 	--font-size: 16px;
@@ -219,7 +220,7 @@ main > footer {
 .menu-button > label {
 	display: block;
 	margin: auto 0;
-	padding: 4px 8px;
+	padding: var(--text-padding);
 	border-radius: var(--border-radius);
 }
 .menu-button:hover > label,
@@ -229,15 +230,15 @@ main > footer {
 
 .menu {
 	display: none;
-	flex-direction: row;
+	flex-direction: column;
+	padding: var(--spacing) 0;
 	position: absolute;
 	z-index: 100000;
 	left: 0;
 	top: 0;
-	min-width: 200px;
+	min-width: 250px;
 	min-height: 30px;
 	box-shadow: var(--box-shadow);
-	padding: 6px 40px;
 	background: var(--col-panel);
 	border-radius: var(--border-radius);
 	border: var(--border);
@@ -245,6 +246,22 @@ main > footer {
 }
 .menu[active] {
 	display: flex;
+}
+
+.menu-entry {
+	width: 100%;
+}
+
+.menu-entry > label {
+	display: block;
+	padding: var(--text-padding);
+	margin: 0 var(--spacing);
+	width: calc(100% - var(--spacing) * 2);
+	border-radius: var(--border-radius);
+}
+
+.menu-entry:hover > label {
+	background: var(--col-fore);
 }
 
 
